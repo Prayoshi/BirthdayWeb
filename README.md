@@ -112,6 +112,6 @@ Works in modern Chrome, Edge, Firefox and Safari (desktop and mobile). Microphon
 
 ## 📄 License
 
-Free to use and modify for your own birthday surprises. Add a license file (e.g. MIT) if you'd like to share it more formally.
+Free to use and modify for your own birthday surprises. 
 
 Made with 💖 and a lot of pixel cats.
