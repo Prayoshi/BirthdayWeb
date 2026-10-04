@@ -1,0 +1,78 @@
+/* =====================================================================
+   PIXEL CATS - one pixel design, recoloured with CSS variables
+   (same idea as the candle colours). The art box is 110 x 100 px.
+   Add a colour by adding another .cat-xxx block below.
+===================================================================== */
+.cat-pixelart {
+  position: absolute; top: 0; left: 0; width: 10px; height: 10px;
+  box-shadow: 10px 0px 0 0 var(--cat-line), 20px 0px 0 0 var(--cat-line), 80px 0px 0 0 var(--cat-line), 90px 0px 0 0 var(--cat-line), 10px 10px 0 0 var(--cat-line), 20px 10px 0 0 var(--cat-body), 30px 10px 0 0 var(--cat-line), 70px 10px 0 0 var(--cat-line), 80px 10px 0 0 var(--cat-body), 90px 10px 0 0 var(--cat-line), 10px 20px 0 0 var(--cat-line), 20px 20px 0 0 var(--cat-hi), 30px 20px 0 0 var(--cat-body), 40px 20px 0 0 var(--cat-line), 50px 20px 0 0 var(--cat-line), 60px 20px 0 0 var(--cat-line), 70px 20px 0 0 var(--cat-body), 80px 20px 0 0 var(--cat-hi), 90px 20px 0 0 var(--cat-line), 10px 30px 0 0 var(--cat-line), 20px 30px 0 0 var(--cat-hi), 30px 30px 0 0 var(--cat-body), 40px 30px 0 0 var(--cat-body), 50px 30px 0 0 var(--cat-body), 60px 30px 0 0 var(--cat-body), 70px 30px 0 0 var(--cat-body), 80px 30px 0 0 var(--cat-hi), 90px 30px 0 0 var(--cat-line), 0px 40px 0 0 var(--cat-line), 10px 40px 0 0 var(--cat-body), 20px 40px 0 0 var(--cat-body), 30px 40px 0 0 var(--cat-body), 40px 40px 0 0 var(--cat-body), 50px 40px 0 0 var(--cat-body), 60px 40px 0 0 var(--cat-body), 70px 40px 0 0 var(--cat-body), 80px 40px 0 0 var(--cat-body), 90px 40px 0 0 var(--cat-body), 100px 40px 0 0 var(--cat-line), 0px 50px 0 0 var(--cat-line), 10px 50px 0 0 var(--cat-body), 20px 50px 0 0 var(--cat-body), 30px 50px 0 0 var(--cat-body), 40px 50px 0 0 var(--cat-body), 50px 50px 0 0 var(--cat-hi), 60px 50px 0 0 var(--cat-body), 70px 50px 0 0 var(--cat-body), 80px 50px 0 0 var(--cat-body), 90px 50px 0 0 var(--cat-body), 100px 50px 0 0 var(--cat-line), 0px 60px 0 0 var(--cat-line), 10px 60px 0 0 var(--cat-body), 20px 60px 0 0 var(--cat-body), 30px 60px 0 0 var(--cat-eye), 40px 60px 0 0 var(--cat-body), 50px 60px 0 0 var(--cat-hi), 60px 60px 0 0 var(--cat-body), 70px 60px 0 0 var(--cat-eye), 80px 60px 0 0 var(--cat-body), 90px 60px 0 0 var(--cat-body), 100px 60px 0 0 var(--cat-line), 0px 70px 0 0 var(--cat-line), 10px 70px 0 0 var(--cat-body), 20px 70px 0 0 var(--cat-body), 30px 70px 0 0 var(--cat-eye), 40px 70px 0 0 var(--cat-hi), 50px 70px 0 0 var(--cat-hi), 60px 70px 0 0 var(--cat-hi), 70px 70px 0 0 var(--cat-eye), 80px 70px 0 0 var(--cat-body), 90px 70px 0 0 var(--cat-body), 100px 70px 0 0 var(--cat-line), 10px 80px 0 0 var(--cat-line), 20px 80px 0 0 var(--cat-body), 30px 80px 0 0 var(--cat-hi), 40px 80px 0 0 var(--cat-hi), 50px 80px 0 0 var(--cat-nose), 60px 80px 0 0 var(--cat-hi), 70px 80px 0 0 var(--cat-hi), 80px 80px 0 0 var(--cat-body), 90px 80px 0 0 var(--cat-line), 20px 90px 0 0 var(--cat-line), 30px 90px 0 0 var(--cat-line), 40px 90px 0 0 var(--cat-line), 50px 90px 0 0 var(--cat-line), 60px 90px 0 0 var(--cat-line), 70px 90px 0 0 var(--cat-line), 80px 90px 0 0 var(--cat-line);
+}
+.cat { position: absolute; width: 110px; height: 100px; transform-origin: top left; }
+
+.cat-grey   { --cat-line:#353232; --cat-body:#9e9e9e; --cat-hi:#ffffff; --cat-eye:#353232; --cat-nose:#ffcdd2; }
+.cat-brown  { --cat-line:#3b2418; --cat-body:#a8703f; --cat-hi:#f1d3a8; --cat-eye:#3b2418; --cat-nose:#000000; }
+.cat-butter { --cat-line:#7a5c1e; --cat-body:#fbe28a; --cat-hi:#fff8d6; --cat-eye:#7a5c1e; --cat-nose:#ff9fb0; }
+.cat-black  { --cat-line:#14121a; --cat-body:#3d3b46; --cat-hi:#6a6874; --cat-eye:#ffe27a; --cat-nose:#ff9fb0; }
+.cat-white { --cat-line:#b9aeb8; --cat-body:#f5f5f5; --cat-hi:#ffffff; --cat-eye:#000000; --cat-nose:#ff9fb0; }
+.cat-orange { --cat-line:#7a3a12; --cat-body:#f29a45; --cat-hi:#ffd9a8; --cat-eye:#4a2208; --cat-nose:#ff9fb0; }
+.cat-calico { --cat-line:#5a3b2e; --cat-body:#f7ead8; --cat-hi:#f0a44d; --cat-eye:#3a2418; --cat-nose:#ff9fb0; }
+.cat-tabby { --cat-line:#8d6e63; --cat-body:#a1887f; --cat-hi:#d7ccc8; --cat-eye:#8d6e63; --cat-nose:#ff9fb0; }
+.cat-tuxedo { --cat-line:#2c2c2c; --cat-body:#4a4a4a; --cat-hi:#bdbdbd; --cat-eye:#2c2c2c; --cat-nose:#ff9fb0; }
+.cat-tiger { --cat-line:#8d6f53; --cat-body:#f6ecc4; --cat-hi:#8d6f53; --cat-eye:#341b00; --cat-nose:#040404; }
+.cat-siamese { --cat-line:#353232; --cat-body:#f6ecc4; --cat-hi:#8d6f53; --cat-eye:#341b00; --cat-nose:#040404; }
+
+/* idle bob for the cats sitting around the cake */
+.cat-bob { position: absolute; inset: 0; animation: cat-bob 1.6s steps(2) infinite; }
+@keyframes cat-bob { 50% { transform: translateY(-10px); } }
+
+/* cat shower: STAGE 1 fall -> STAGE 2 bounce -> STAGE 3 float on the floor.
+   JS sets the --variables on each cat and adds .landed / .settled. */
+#cat-rain { position: fixed; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+
+#cat-rain .cat {
+  top: auto;                         /* JS positions each cat from the floor with `bottom` */
+  transform-origin: 50% 100%;        /* scale and tilt around the cat's feet */
+  will-change: transform;
+  transform: translate(var(--dx), var(--y0)) scale(var(--s)) rotate(var(--r0));
+  animation: cat-fall var(--dur) cubic-bezier(.4, 0, .9, .55) var(--delay) both;
+}
+#cat-rain .cat .cat-bob { animation: none; }            /* no sitting-bob while falling */
+
+/* stage 2: added by JS when the fall ends */
+#cat-rain .cat.landed {
+  transform: translate(0, 0) scale(var(--s)) rotate(var(--r1));   /* resting pose */
+  animation: cat-bounce var(--bd) linear 0s 1 both;
+}
+/* stage 3: added by JS when the bounce ends */
+#cat-rain .cat.settled .cat-bob {
+  animation: cat-float var(--fd) ease-in-out infinite alternate;
+}
+
+@keyframes cat-fall {
+  from { transform: translate(var(--dx), var(--y0)) scale(var(--s)) rotate(var(--r0)); }
+  to   { transform: translate(0, 0) scale(var(--s)) rotate(var(--r1)); }
+}
+
+/* one big hop, then (for some cats) a smaller second hop */
+@keyframes cat-bounce {
+  0%   { transform: translate(0, 0) scale(var(--s)) rotate(var(--r1));
+         animation-timing-function: cubic-bezier(.2, .7, .4, 1); }
+  28%  { transform: translate(0, calc(var(--bh) * -1)) scale(var(--s)) rotate(var(--r2));
+         animation-timing-function: cubic-bezier(.6, 0, .8, .4); }
+  54%  { transform: translate(0, 0) scale(var(--s)) rotate(var(--r1));
+         animation-timing-function: cubic-bezier(.2, .7, .4, 1); }
+  74%  { transform: translate(0, calc(var(--bh2) * -1)) scale(var(--s)) rotate(var(--r1));
+         animation-timing-function: cubic-bezier(.6, 0, .8, .4); }
+  100% { transform: translate(0, 0) scale(var(--s)) rotate(var(--r1)); }
+}
+
+@keyframes cat-float {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(var(--fy)) rotate(var(--fr)); }
+}
+
+/* envelope page: still cats scattered behind the content (placed by script.js) */
+#cat-scatter { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.cat-still .cat-bob { animation: none; }
+
+@media (prefers-reduced-motion: reduce) { .cat-bob { animation: none; } #cat-rain { display: none; } }

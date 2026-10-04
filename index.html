@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Birthday Cake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="cake.css" />
+<link rel="stylesheet" href="candle.css" />
+<link rel="stylesheet" href="cat.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PAGE 1: CAKE -->
+  <main id="cake-page" class="page active">
+    <h1 class="title" id="title">Happy Birthday!</h1>
+    <p class="subtitle" id="subtitle">Make a wish and blow the candles.</p>
+
+    <div class="cake-wrap" id="cake-wrap">
+      <div class="cake-stage" id="stage">
+        <!-- art-origin shifts the art's own coordinate space so nothing is clipped.
+             The cake, candles and cats are all added inside it. -->
+        <div class="art-origin" id="art-origin">
+          <div class="pixelart-to-css cake-pixelart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mic-status" class="mic-status">Tap below to turn on the mic to blow the candles or click the candle to blow them</div>
+    <button id="mic-btn" class="btn">Tap me and start to blow the candles</button>
+    <div id="volume-meter" class="volume-meter" hidden><div id="volume-fill" class="volume-fill"></div></div>
+    <button id="skip-btn" class="skip-btn">Skip the mic→</button>
+  </main>
+
+  <!-- PAGE 2: ENVELOPE -->
+  <section id="letter-page" class="page">
+    <p class="letter-title">You've got mail!</p>
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Tap to open the letter">
+      <div class="env-layer env-back"></div>
+      <div class="paper"><i></i><i></i><i></i><i></i></div>
+      <div class="env-layer env-front"></div>
+      <div class="flap">
+        <div class="env-layer flap-face flap-out"></div>
+        <div class="env-layer flap-face flap-in"></div>
+      </div>
+    </div>
+     <p class="tap-hint" id="tap-hint"> tap </p>
+  </section>
+
+  <!-- THE LETTER (shown after the envelope opens) -->
+  <div class="letter-overlay" id="overlay" aria-live="polite">
+    <canvas id="confetti"></canvas>
+    <article class="letter-card">
+      <p class="letter-eyebrow"> A letter to my friend</p>
+      <p class="letter-text" id="letter-text"></p>
+      <p class="letter-from" id="letter-from"></p>
+    </article>
+  </div>
+
+  <div id="cat-rain"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+:root {
+  --peach: #ffd9c2; --peach-deep: #ffb199; --pink: #ff8fb1; --pink-deep: #ff5f8f;
+  --ink: #6b3b3b; --muted: #a8686f; --gold: #ff9d3d; --line: #7a3b4a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; color: var(--ink); font-family: 'Pixelify Sans', sans-serif; overflow-x: hidden; }
+
+/* peach-pink gradient + pixel grid */
+body {
+  background-color: var(--peach);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.28) 0 4px, transparent 4px 16px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.2) 0 4px, transparent 4px 16px),
+    linear-gradient(
+    135deg,
+    #ffd6b8 0%,
+    #ffc9b5 22%,
+    #bfe7ff 50%,
+    #c9d5ff 72%,
+    #d8c7f5 100%
+  );
+  background-attachment: fixed;
+}
+
+.page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem 1rem; text-align: center; }
+.page.active { display: flex; }
+
+.title { font-size: clamp(1.7rem, 7vw, 2.6rem); color: var(--pink-deep); margin: 0 0 .4rem; text-shadow: 3px 3px 0 rgba(255,255,255,.7); }
+.subtitle { font-size: 1.15rem; color: var(--muted); margin: 0 0 1rem; }
+
+/* ---- cake + candles (all inside one scaled stage so candles sit ON the cake) ---- */
+.cake-wrap {
+    width: min(94vw, 520px);
+    aspect-ratio: 700 / 470;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+}
+
+.cake-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 470px;
+    transform-origin: top left;
+    transform: scale(var(--cake-scale, 0.74));
+}
+
+
+.art-origin { position: absolute; left: -20px; top: -30px; width: 0; height: 0; }   /* = -(VIEW.x), -(VIEW.y) in script.js */
+.candle-wrap { position: absolute; width: 10px; height: 10px; transform-origin: top left; }
+.candle-wrap .candle-pixelart { top: 0; left: 0; }
+.smoke {
+  position: absolute; left: 60px; top: 10px; width: 70px; height: 70px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,.85), transparent 70%); animation: smoke 1.3s ease-out forwards;
+}
+@keyframes smoke { from { opacity: .9; transform: translateY(0) scale(.6); } to { opacity: 0; transform: translateY(-90px) scale(2); } }
+
+.mic-status { font-size: 1rem; color: var(--muted); min-height: 1.4em; margin-bottom: .8rem; }
+.btn {
+  font: 600 1.1rem 'Pixelify Sans', sans-serif; background: var(--gold); color: #401d00; border: 3px solid var(--line);
+  padding: .7rem 1.5rem; cursor: pointer; box-shadow: 0 5px 0 var(--line); clip-path: polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px));
+}
+.btn:active { transform: translateY(4px); }
+.btn:disabled { opacity: .5; }
+.volume-meter { width: min(80vw, 260px); height: 12px; background: rgba(255,255,255,.55); border: 2px solid var(--line); margin-top: 1rem; }
+.volume-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--pink-deep)); }
+.skip-btn { margin-top: 1.2rem; background: none; border: 0; color: var(--muted); font: 1rem 'Pixelify Sans', sans-serif; text-decoration: underline; cursor: pointer; }
+
+/* ---- pixel envelope (art is drawn by script.js from small grids) ---- */
+.letter-title { font-size: 1.6rem; color: var(--pink-deep); margin: 0 0 1.6rem; text-shadow: 2px 2px 0 rgba(255,255,255,.7); }
+.envelope {
+  --px: clamp(9px, 3.3vw, 13px);
+  position: relative; width: calc(var(--px) * 21); height: calc(var(--px) * 13); perspective: 900px; cursor: pointer;
+  animation: bob 2.4s ease-in-out infinite; outline: none;
+}
+.envelope.open { animation: none; cursor: default; }
+@keyframes bob { 50% { transform: translateY(-8px); } }
+.env-layer { position: absolute; top: 0; left: 0; width: var(--px); height: var(--px); backface-visibility: hidden; }
+.env-back { z-index: 1; } .env-front { z-index: 3; }
+.flap { position: absolute; top: 0; left: 0; width: calc(var(--px) * 21); height: calc(var(--px) * 9); z-index: 4; transform-origin: top center; transform-style: preserve-3d; transition: transform .7s ease; }
+.flap-in { transform: rotateX(180deg); }
+.envelope.open .flap { transform: rotateX(180deg); }
+.paper {
+  position: absolute; z-index: 2; left: calc(var(--px) * 2); top: calc(var(--px) * 1.5); width: calc(var(--px) * 17); height: calc(var(--px) * 11);
+  background: #fffaf0; border: 3px solid var(--line); padding: calc(var(--px) * 1.2) calc(var(--px) * 1.5); transition: transform .7s ease .55s;
+}
+.paper i { display: block; height: 3px; background: #e6b8b0; margin-bottom: calc(var(--px) * .9); }
+.envelope.open .paper { transform: translateY(calc(var(--px) * -6)); }
+.tap-hint { margin-top: 2.2rem; font-size: 1.2rem; color: var(--ink); animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+
+/* ---- letter card ---- */
+.letter-overlay { position: fixed; inset: 0; z-index: 10; display: none; align-items: center; justify-content: center; padding: 1.2rem; background: rgba(255, 143, 177, .45); backdrop-filter: blur(3px); }
+.letter-overlay.show { display: flex; animation: fade .5s ease both; }
+@keyframes fade { from { opacity: 0; } }
+#confetti { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.letter-card {
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+
+  text-align: center;
+
+  /* Paper */
+  background:
+    repeating-linear-gradient(
+      transparent 0 31px,
+      #f1d3cb 31px 33px
+    ),
+    #fffaf0;
+
+  /* Pixel-style border */
+  border: 4px solid var(--line);
+
+  /* Pixel shadow */
+  box-shadow:
+    6px 0 0 var(--line),
+    0 6px 0 var(--line),
+    6px 6px 0 var(--line);
+
+  /* Pixelated corners */
+  clip-path: polygon(
+    0 12px,
+    4px 12px,
+    4px 6px,
+    8px 6px,
+    8px 2px,
+
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 6px,
+    calc(100% - 4px) 6px,
+    calc(100% - 4px) 12px,
+    100% 12px,
+
+    100% calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 6px),
+    calc(100% - 8px) calc(100% - 6px),
+    calc(100% - 8px) 100%,
+
+    8px 100%,
+    8px calc(100% - 6px),
+    4px calc(100% - 6px),
+    4px calc(100% - 12px),
+    0 calc(100% - 12px)
+  );
+
+  animation: rise .6s ease both;
+}
+@keyframes rise { from { transform: translateY(24px) scale(.96); opacity: 0; } }
+.letter-eyebrow { color: var(--pink-deep); margin: 0 0 1rem; font-size: 1.1rem; }
+.letter-text { font-size: clamp(1rem, 3.5vw, 1.3rem); line-height: 33px; margin: 0 0 1rem; white-space: pre-wrap; min-height: 66px; }
+.letter-from { color: var(--muted); margin: 0; font-size: 1.1rem; }
+
+@media (prefers-reduced-motion: reduce) { .envelope, .tap-hint, .cake-pixelart, .candle-pixelart { animation: none !important; } }
+
+/* cats float over the page, so keep the interactive bits above them */
+.mic-status, .btn, .skip-btn, .volume-meter, .tap-hint, .envelope { position: relative; z-index: 6; }
+.skip-btn { background: rgba(255, 248, 240, .8); padding: .15rem .6rem; }   /* stays readable when cats float behind it */
